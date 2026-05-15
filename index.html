@@ -2416,17 +2416,17 @@ document.getElementById('streakCount').textContent = streak;
         }
       }
       // تشغيل إحصائيات الصفحة الرئيسية
-document.addEventListener('DOMContentLoaded', () => {
-    // محاولة جلب البيانات من التخزين المحلي، أو وضع أرقام افتراضية
-    let completed = localStorage.getItem('totalCompletedTests') || Math.floor(Math.random() * 50) + 10;
-    let streak = localStorage.getItem('streakDays') || Math.floor(Math.random() * 5) + 1;
+<script>
+    // جلب الإحصائيات الحقيقية للمستخدم عند فتح الصفحة الرئيسية
+    document.addEventListener('DOMContentLoaded', () => {
+        // إذا كان المستخدم جديد، الرقم سيكون 0
+        let completed = localStorage.getItem('realCompletedTests') || 0;
+        let streak = localStorage.getItem('realStreakDays') || 0;
 
-    const totalTestsElement = document.getElementById('totalTests');
-    const streakDaysElement = document.getElementById('streakDays');
-
-    if(totalTestsElement) totalTestsElement.innerText = completed;
-    if(streakDaysElement) streakDaysElement.innerText = streak;
-});
+        document.getElementById('totalTests').innerText = completed;
+        document.getElementById('streakDays').innerText = streak;
+    });
+</script>
 
       function startCountdown() {
         function update() {
